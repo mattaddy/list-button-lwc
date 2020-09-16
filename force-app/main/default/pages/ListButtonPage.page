@@ -1,0 +1,16 @@
+<apex:page standardController="Account" recordSetVar="accounts" extensions="ListButtonPageController">
+  <apex:includeLightning />
+    <div id="lightningvf" />
+    <script>
+        $Lightning.use("c:lwcvf", function() {
+          $Lightning.createComponent("c:lwcMassQuickAction",
+              { 
+                records: JSON.parse('{!JSENCODE(selected)}'),
+                recordIds: JSON.parse('{!JSENCODE(selectedIds)}')
+              },
+              "lightningvf",
+              function(cmp) { }
+          );
+        });
+    </script>
+</apex:page>
